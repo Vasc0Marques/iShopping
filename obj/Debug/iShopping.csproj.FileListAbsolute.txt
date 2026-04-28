@@ -1,0 +1,30 @@
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.csproj.AssemblyReference.cache
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.Properties.Resources.resources
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.csproj.GenerateResource.cache
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.csproj.CoreCompileInputs.cache
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\iShopping.exe.config
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\iShopping.exe
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\iShopping.pdb
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\EntityFramework.dll
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\EntityFramework.xml
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.csproj.Up2Date
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.exe
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.pdb
+C:\Users\Vasco\OneDrive - IPLeiria\UNI\DA\iShopping\obj\Debug\iShopping.Views.RegistoForm.resources
+C:\DA\iShopping\bin\Debug\iShopping.exe.config
+C:\DA\iShopping\bin\Debug\iShopping.exe
+C:\DA\iShopping\bin\Debug\iShopping.pdb
+C:\DA\iShopping\bin\Debug\EntityFramework.dll
+C:\DA\iShopping\bin\Debug\EntityFramework.SqlServer.dll
+C:\DA\iShopping\bin\Debug\EntityFramework.xml
+C:\DA\iShopping\bin\Debug\EntityFramework.SqlServer.xml
+C:\DA\iShopping\obj\Debug\iShopping.csproj.AssemblyReference.cache
+C:\DA\iShopping\obj\Debug\iShopping.Properties.Resources.resources
+C:\DA\iShopping\obj\Debug\iShopping.Views.RegistoForm.resources
+C:\DA\iShopping\obj\Debug\iShopping.csproj.GenerateResource.cache
+C:\DA\iShopping\obj\Debug\iShopping.csproj.CoreCompileInputs.cache
+C:\DA\iShopping\obj\Debug\iShopping.csproj.Up2Date
+C:\DA\iShopping\obj\Debug\iShopping.exe
+C:\DA\iShopping\obj\Debug\iShopping.pdb
