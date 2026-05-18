@@ -116,6 +116,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\GestaoTiposArtigoForm.resx">
+      <DependentUpon>GestaoTiposArtigoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GestaoUtilizadoresForm.resx">
+      <DependentUpon>GestaoUtilizadoresForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistoForm.resx">
       <DependentUpon>RegistoForm.cs</DependentUpon>
     </EmbeddedResource>

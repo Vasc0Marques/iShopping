@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using iShopping.Data;
 
 namespace iShopping.Models
 {
@@ -14,6 +16,7 @@ namespace iShopping.Models
             OrcamentosCriados = new HashSet<Orcamento>();
             OrcamentosAlterados = new HashSet<Orcamento>();
         }
+
 
         public int Id { get; set; }
 

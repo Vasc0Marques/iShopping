@@ -28,3 +28,5 @@ C:\DA\iShopping\obj\Debug\iShopping.csproj.CoreCompileInputs.cache
 C:\DA\iShopping\obj\Debug\iShopping.csproj.Up2Date
 C:\DA\iShopping\obj\Debug\iShopping.exe
 C:\DA\iShopping\obj\Debug\iShopping.pdb
+C:\DA\iShopping\obj\Debug\iShopping.Views.GestaoUtilizadoresForm.resources
+C:\DA\iShopping\obj\Debug\iShopping.Views.GestaoTiposArtigoForm.resources
