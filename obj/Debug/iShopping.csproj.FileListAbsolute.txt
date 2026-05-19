@@ -46,3 +46,8 @@ C:\UNI\iShopping\obj\Debug\iShopping.pdb
 C:\UNI\iShopping\obj\Debug\iShopping.Migrations.InitialCreate.resources
 C:\UNI\iShopping\obj\Debug\iShopping.Views.GestaoArtigosForm.resources
 C:\UNI\iShopping\obj\Debug\iShopping.Views.GestaoOrcamentosForm.resources
+C:\DA\iShopping\obj\Debug\iShopping.Migrations.InitialCreate.resources
+C:\DA\iShopping\obj\Debug\iShopping.Views.GestaoArtigosForm.resources
+C:\DA\iShopping\obj\Debug\iShopping.Views.GestaoOrcamentosForm.resources
+C:\DA\iShopping\obj\Debug\iShopping.Views.PlaneamentoCompraForm.resources
+C:\DA\iShopping\obj\Debug\iShopping.Views.PlaneamentoComprasForm.resources

@@ -1,22 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\UNI\\iShopping\\",
+  "WorkspaceRootPath": "C:\\DA\\iShopping\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\uni\\ishopping\\views\\gestaoorcamentosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\gestaoorcamentosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|C:\\DA\\iShopping\\views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\uni\\ishopping\\models\\orcamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:models\\orcamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\modocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\modocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\uni\\ishopping\\views\\gestaotiposartigoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\gestaotiposartigoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\uni\\ishopping\\views\\gestaoartigosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\gestaoartigosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\planeamentocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\planeamentocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,90 +22,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{df72777a-9fad-4a96-a35f-866efd0a1ce4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GestaoTiposArtigoForm.cs [Design]",
-              "DocumentMoniker": "C:\\UNI\\iShopping\\Views\\GestaoTiposArtigoForm.cs",
-              "RelativeDocumentMoniker": "Views\\GestaoTiposArtigoForm.cs",
-              "ToolTip": "C:\\UNI\\iShopping\\Views\\GestaoTiposArtigoForm.cs [Design]",
-              "RelativeToolTip": "Views\\GestaoTiposArtigoForm.cs [Design]",
+              "Title": "PlaneamentoCompraForm.cs [Design]",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoCompraForm.cs",
+              "RelativeDocumentMoniker": "Views\\PlaneamentoCompraForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoCompraForm.cs [Design]*",
+              "RelativeToolTip": "Views\\PlaneamentoCompraForm.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T02:00:11.19Z",
+              "WhenOpened": "2026-05-19T18:48:59.336Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Orcamento.cs",
-              "DocumentMoniker": "C:\\UNI\\iShopping\\Models\\Orcamento.cs",
-              "RelativeDocumentMoniker": "Models\\Orcamento.cs",
-              "ToolTip": "C:\\UNI\\iShopping\\Models\\Orcamento.cs",
-              "RelativeToolTip": "Models\\Orcamento.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACAAAAAAAAAA",
+              "Title": "ModoCompraForm.cs [Design]",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\ModoCompraForm.cs",
+              "RelativeDocumentMoniker": "Views\\ModoCompraForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\ModoCompraForm.cs [Design]",
+              "RelativeToolTip": "Views\\ModoCompraForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T01:49:45.986Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T18:36:39.502Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GestaoOrcamentosForm.cs",
-              "DocumentMoniker": "C:\\UNI\\iShopping\\Views\\GestaoOrcamentosForm.cs",
-              "RelativeDocumentMoniker": "Views\\GestaoOrcamentosForm.cs",
-              "ToolTip": "C:\\UNI\\iShopping\\Views\\GestaoOrcamentosForm.cs",
-              "RelativeToolTip": "Views\\GestaoOrcamentosForm.cs",
-              "ViewState": "AQIAANwAAAAAAAAAAAAAwOoAAAAOAAAA",
+              "Title": "PlaneamentoComprasForm.cs [Design]",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs",
+              "RelativeDocumentMoniker": "Views\\PlaneamentoComprasForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs [Design]*",
+              "RelativeToolTip": "Views\\PlaneamentoComprasForm.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T01:33:02.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T18:35:29.819Z",
+              "EditorCaption": " [Design]"
             }
           ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "919e337c-d821-4fc8-826e-f1c104e017b3",
-        "Display": 0,
-        "X": 553,
-        "Y": 157,
-        "Width": 963,
-        "Height": 612,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
+        },
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GestaoArtigosForm.cs [Design]",
-              "DocumentMoniker": "C:\\UNI\\iShopping\\Views\\GestaoArtigosForm.cs",
-              "RelativeDocumentMoniker": "Views\\GestaoArtigosForm.cs",
-              "ToolTip": "C:\\UNI\\iShopping\\Views\\GestaoArtigosForm.cs [Design]",
-              "RelativeToolTip": "Views\\GestaoArtigosForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T01:05:39.849Z",
-              "EditorCaption": " [Design]"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             }
           ]
         }

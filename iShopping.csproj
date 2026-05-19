@@ -104,6 +104,9 @@
     <Compile Include="Views\ModoCompraForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\PlaneamentoCompraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\PlaneamentoComprasForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GestaoOrcamentosForm.resx">
       <DependentUpon>GestaoOrcamentosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PlaneamentoCompraForm.resx">
+      <DependentUpon>PlaneamentoCompraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PlaneamentoComprasForm.resx">
+      <DependentUpon>PlaneamentoComprasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistoForm.resx">
       <DependentUpon>RegistoForm.cs</DependentUpon>
