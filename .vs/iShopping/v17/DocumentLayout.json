@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\DA\\iShopping\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|C:\\DA\\iShopping\\views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\planeamentocomprasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\modocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\modocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\planeamentocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\planeamentocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\planeamentocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\planeamentocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|c:\\da\\ishopping\\views\\modocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68234EF8-5083-4B40-904A-A7E60934A0C8}|iShopping.csproj|solutionrelative:views\\modocompraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,39 +34,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PlaneamentoCompraForm.cs [Design]",
-              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoCompraForm.cs",
-              "RelativeDocumentMoniker": "Views\\PlaneamentoCompraForm.cs",
-              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoCompraForm.cs [Design]*",
-              "RelativeToolTip": "Views\\PlaneamentoCompraForm.cs [Design]*",
+              "DocumentIndex": 0,
+              "Title": "PlaneamentoComprasForm.cs",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs",
+              "RelativeDocumentMoniker": "Views\\PlaneamentoComprasForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs",
+              "RelativeToolTip": "Views\\PlaneamentoComprasForm.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAqwDUAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T18:48:59.336Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-05-20T17:41:54.8Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ModoCompraForm.cs [Design]",
-              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\ModoCompraForm.cs",
-              "RelativeDocumentMoniker": "Views\\ModoCompraForm.cs",
-              "ToolTip": "C:\\DA\\iShopping\\Views\\ModoCompraForm.cs [Design]",
-              "RelativeToolTip": "Views\\ModoCompraForm.cs [Design]",
+              "Title": "PlaneamentoComprasForm.cs [Design]",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs",
+              "RelativeDocumentMoniker": "Views\\PlaneamentoComprasForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs [Design]",
+              "RelativeToolTip": "Views\\PlaneamentoComprasForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T18:36:39.502Z",
+              "WhenOpened": "2026-05-20T17:41:53.508Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlaneamentoComprasForm.cs [Design]",
-              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs",
-              "RelativeDocumentMoniker": "Views\\PlaneamentoComprasForm.cs",
-              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoComprasForm.cs [Design]*",
-              "RelativeToolTip": "Views\\PlaneamentoComprasForm.cs [Design]*",
+              "DocumentIndex": 3,
+              "Title": "ModoCompraForm.cs",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\ModoCompraForm.cs",
+              "RelativeDocumentMoniker": "Views\\ModoCompraForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\ModoCompraForm.cs",
+              "RelativeToolTip": "Views\\ModoCompraForm.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAQwIEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T18:35:29.819Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-05-20T17:40:52.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlaneamentoCompraForm.cs",
+              "DocumentMoniker": "C:\\DA\\iShopping\\Views\\PlaneamentoCompraForm.cs",
+              "RelativeDocumentMoniker": "Views\\PlaneamentoCompraForm.cs",
+              "ToolTip": "C:\\DA\\iShopping\\Views\\PlaneamentoCompraForm.cs",
+              "RelativeToolTip": "Views\\PlaneamentoCompraForm.cs",
+              "ViewState": "AQIAAIIAAAAAAAAAAAAAAJsAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T17:40:38.632Z",
+              "EditorCaption": ""
             }
           ]
         },

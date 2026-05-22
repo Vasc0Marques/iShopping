@@ -46,6 +46,12 @@ namespace iShopping.Views
             this.listViewCompras.TabIndex = 2;
             this.listViewCompras.UseCompatibleStateImageBehavior = false;
             this.listViewCompras.View = System.Windows.Forms.View.Details;
+            this.listViewCompras.SelectedIndexChanged += new System.EventHandler(this.listViewCompras_SelectedIndexChanged);
+            this.listViewCompras.Columns.Add("Id", 60);
+            this.listViewCompras.Columns.Add("Nome", 220);
+            this.listViewCompras.Columns.Add("Data Criacao", 120);
+            this.listViewCompras.Columns.Add("Utilizador", 150);
+            this.listViewCompras.Columns.Add("Estado", 120);
             // 
             // cbEstado
             // 
@@ -201,6 +207,11 @@ namespace iShopping.Views
             }
 
             CarregarCompras(cbEstado.Text);
+        }
+
+        private void listViewCompras_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

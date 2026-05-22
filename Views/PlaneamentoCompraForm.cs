@@ -152,6 +152,11 @@ namespace iShopping.Views
             this.listViewItens.UseCompatibleStateImageBehavior = false;
             this.listViewItens.View = System.Windows.Forms.View.Details;
             this.listViewItens.SelectedIndexChanged += new System.EventHandler(this.listViewItens_SelectedIndexChanged);
+            this.listViewItens.Columns.Add("Id", 50);
+            this.listViewItens.Columns.Add("Artigo", 180);
+            this.listViewItens.Columns.Add("Quantidade", 100);
+            this.listViewItens.Columns.Add("Preco", 100);
+            this.listViewItens.Columns.Add("Observacoes", 200);
             // 
             // cbArtigo
             // 
