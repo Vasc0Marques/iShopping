@@ -247,6 +247,8 @@ namespace iShopping.Views
                 context.SaveChanges();
                 CarregarUtilizadores();
                 LimparCampos();
+                MessageBox.Show("Utilizador '" + user.Nome + "' apagado com sucesso!");
+
             }
         }
 
@@ -283,6 +285,8 @@ namespace iShopping.Views
                     utilizador.Username = crudUserUsername.Text;
                     utilizador.Password = crudUserPassword.Text;
                     context.SaveChanges();
+                    MessageBox.Show("Utilizador '" + utilizador.Nome + "' editado com sucesso!");
+
                 }
                 else
                 {
@@ -303,7 +307,8 @@ namespace iShopping.Views
 
                     context.Utilizadores.Add(utilizador);
                     context.SaveChanges();
-                    LimparCampos(); 
+                    LimparCampos();
+                    MessageBox.Show("Utilizador '" + utilizador.Nome + "' adicionado com sucesso!");
                 }
 
                 CarregarUtilizadores(); 

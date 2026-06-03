@@ -353,7 +353,6 @@ namespace iShopping.Views
             var selectedItem = listViewCompras.SelectedItems[0];
             var id = (int)selectedItem.Tag;
             _compraIdSelecionada = id;
-            lbErro.Visible = false;
             CarregarItensCompra(id);
         }
 
@@ -392,31 +391,27 @@ namespace iShopping.Views
         {
             if (!_compraIdSelecionada.HasValue)
             {
-                lbErro.Text = "Selecione uma compra primeiro.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione uma compra para adicionar ou editar itens.");
                 return;
             }
 
             if (cbArtigo.SelectedIndex == -1)
             {
-                lbErro.Text = "Selecione um artigo.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um artigo válido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtQuantidadeAdquirida.Text) ||
                 !decimal.TryParse(txtQuantidadeAdquirida.Text, out decimal quantidade))
             {
-                lbErro.Text = "A quantidade real deve ser um numero valido.";
-                lbErro.Visible = true;
+                MessageBox.Show("A quantidade adquirida deve ser um número válido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPrecoReal.Text) ||
                 !decimal.TryParse(txtPrecoReal.Text, out decimal preco))
             {
-                lbErro.Text = "O preco real deve ser um numero valido.";
-                lbErro.Visible = true;
+                MessageBox.Show("O preço real deve ser um número válido.");
                 return;
             }
 
@@ -461,8 +456,7 @@ namespace iShopping.Views
         {
             if (listViewItens.SelectedItems.Count == 0)
             {
-                lbErro.Text = "Selecione um item para apagar.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um item para apagar.");
                 return;
             }
 
@@ -498,15 +492,13 @@ namespace iShopping.Views
         {
             if (!_compraIdSelecionada.HasValue)
             {
-                lbErro.Text = "Selecione uma compra para fechar.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione uma compra para fechar.");
                 return;
             }
 
             if (cbUtilizadorFechou.SelectedIndex == -1)
             {
-                lbErro.Text = "Selecione o utilizador que fechou a compra.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione o utilizador que fechou a compra.");
                 return;
             }
 

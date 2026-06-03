@@ -361,22 +361,19 @@ namespace iShopping.Views
         {
             if (_compraSelecionadaFechada)
             {
-                lbErro.Text = "Esta compra esta fechada e nao pode ser editada.";
-                lbErro.Visible = true;
+                MessageBox.Show("Esta compra esta fechada e nao pode ser editada.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtNomeCompra.Text))
             {
-                lbErro.Text = "O nome da compra e obrigatorio.";
-                lbErro.Visible = true;
+                MessageBox.Show("O nome da compra é obrigatório.");
                 return;
             }
 
             if (cbUtilizador.SelectedIndex == -1)
             {
-                lbErro.Text = "Selecione um utilizador.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um utilizador.");
                 return;
             }
 
@@ -390,7 +387,7 @@ namespace iShopping.Views
                     compra.Nome = txtNomeCompra.Text.Trim();
                     compra.IdUtilizadorCriacao = (int)cbUtilizador.SelectedValue;
                     context.SaveChanges();
-                    MessageBox.Show("Compra planeada atualizada com sucesso!");
+                    MessageBox.Show("Compra '" + compra.Nome + "' atualizada com sucesso!");
                 }
                 else
                 {
@@ -402,7 +399,7 @@ namespace iShopping.Views
                     };
                     context.Compras.Add(compra);
                     context.SaveChanges();
-                    MessageBox.Show("Compra planeada criada com sucesso!");
+                    MessageBox.Show("Compra '" + compra.Nome + "' criada com sucesso!");
                     _compraIdEmEdicao = compra.Id;
                     AtualizarEstadoEdicaoCompra();
                 }
@@ -441,8 +438,7 @@ namespace iShopping.Views
         {
             if (_compraSelecionadaFechada)
             {
-                lbErro.Text = "Esta compra esta fechada e nao pode ser editada.";
-                lbErro.Visible = true;
+                MessageBox.Show("Esta compra esta fechada e nao pode ser editada.");
                 return;
             }
 
@@ -453,38 +449,33 @@ namespace iShopping.Views
         {
             if (_compraSelecionadaFechada)
             {
-                lbErro.Text = "Esta compra esta fechada e nao pode ser editada.";
-                lbErro.Visible = true;
+                MessageBox.Show("Esta compra esta fechada e nao pode ser editada.");
                 return;
             }
 
             if (!_compraIdEmEdicao.HasValue)
             {
-                lbErro.Text = "Guarde a compra antes de adicionar itens.";
-                lbErro.Visible = true;
+                MessageBox.Show("Guarde a compra antes de adicionar itens.");
                 return;
             }
 
             if (cbArtigo.SelectedIndex == -1)
             {
-                lbErro.Text = "Selecione um artigo.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um artigo.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtQuantidadePrevista.Text) ||
                 !decimal.TryParse(txtQuantidadePrevista.Text, out decimal quantidade))
             {
-                lbErro.Text = "A quantidade prevista deve ser um numero valido.";
-                lbErro.Visible = true;
+                MessageBox.Show("A quantidade prevista deve ser um numero valido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPrecoEstimado.Text) ||
                 !decimal.TryParse(txtPrecoEstimado.Text, out decimal preco))
             {
-                lbErro.Text = "O preco estimado deve ser um numero valido.";
-                lbErro.Visible = true;
+                MessageBox.Show("O preco estimado deve ser um numero valido.");
                 return;
             }
 
@@ -501,7 +492,7 @@ namespace iShopping.Views
                     itemCompra.Observacoes = txtObservacoes.Text.Trim();
                     itemCompra.ArtigoPrevisto = true;
                     context.SaveChanges();
-                    MessageBox.Show("Item atualizado com sucesso!");
+                    MessageBox.Show("Item '" + itemCompra.Artigo.Nome + "' atualizado com sucesso!");
                 }
                 else
                 {
@@ -516,7 +507,7 @@ namespace iShopping.Views
                     };
                     context.ItensCompra.Add(itemCompra);
                     context.SaveChanges();
-                    MessageBox.Show("Item adicionado com sucesso!");
+                    MessageBox.Show("Item '" + itemCompra.Artigo.Nome + "' adicionado com sucesso!");
                 }
             }
 
@@ -529,19 +520,17 @@ namespace iShopping.Views
         {
             if (_compraSelecionadaFechada)
             {
-                lbErro.Text = "Esta compra esta fechada e nao pode ser editada.";
-                lbErro.Visible = true;
+                MessageBox.Show("Esta compra esta fechada e nao pode ser editada.");
                 return;
             }
 
             if (listViewItens.SelectedItems.Count == 0)
             {
-                lbErro.Text = "Selecione um item para apagar.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um item para apagar.");
                 return;
             }
 
-            if (MessageBox.Show("Tem a certeza que quer apagar este item?", "Confirmar",
+            if (MessageBox.Show("Tem a certeza que quer apagar o item '" + ((ListViewItem)listViewItens.SelectedItems[0]).Text + "'?", "Confirmar",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
             {
                 return;
@@ -557,7 +546,7 @@ namespace iShopping.Views
                 {
                     context.ItensCompra.Remove(itemCompra);
                     context.SaveChanges();
-                    MessageBox.Show("Item apagado com sucesso!");
+                    MessageBox.Show("Item '" + itemCompra.Artigo.Nome + "' apagado com sucesso!");
                 }
             }
 

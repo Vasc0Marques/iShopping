@@ -403,40 +403,35 @@ namespace iShopping.Views
         {
             if (string.IsNullOrEmpty(crudOrcamentoValorInput.Text))
             {
-                lbErro.Text = "O valor é obrigatório.";
-                lbErro.Visible = true;
+                MessageBox.Show("O valor é obrigatório");
                 return;
             }
 
             if (!decimal.TryParse(crudOrcamentoValorInput.Text, out decimal valor))
             {
-                lbErro.Text = "O valor deve ser um número válido.";
-                lbErro.Visible = true;
+                MessageBox.Show("O valor deve ser um número válido");
                 return;
             }
 
             if (crudOrcamentoMesInput.SelectedIndex == -1)
             {
-                lbErro.Text = "Selecione um mês.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um mês.");
                 return;
             }
 
             if (string.IsNullOrEmpty(crudOrcamentoAnoInput.Text) || !int.TryParse(crudOrcamentoAnoInput.Text, out int ano))
             {
-                lbErro.Text = "O ano deve ser um número válido.";
-                lbErro.Visible = true;
+                MessageBox.Show("O ano é obrigatório e deve ser um número válido.");
                 return;
             }
 
             if (crudOrcamentoUtilizadorInput.SelectedIndex == -1)
             {
-                lbErro.Text = "Selecione um utilizador.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um utilizador.");
                 return;
             }
 
-            int mesNumerico = crudOrcamentoMesInput.SelectedIndex + 1; // Converter índice (0-11) para número (1-12)
+            int mesNumerico = crudOrcamentoMesInput.SelectedIndex + 1; 
 
             using (var context = new iShoppingContext())
             {
@@ -448,14 +443,13 @@ namespace iShopping.Views
                     orcamento.Ano = ano;
                     orcamento.IdUtilizadorCriacao = (int)crudOrcamentoUtilizadorInput.SelectedValue;
                     context.SaveChanges();
-                    MessageBox.Show("Orçamento atualizado com sucesso!");
+                    MessageBox.Show("Orçamento de atualizado com sucesso!");
                 }
                 else
                 {
                     if (context.Orcamentos.Any(o => o.Mes == mesNumerico && o.Ano == ano && o.IdUtilizadorCriacao == (int)crudOrcamentoUtilizadorInput.SelectedValue))
                     {
-                        lbErro.Text = "Já existe um orçamento para este mês e utilizador.";
-                        lbErro.Visible = true;
+                        MessageBox.Show("Já existe um orçamento para este mês e utilizador.");
                         return;
                     }
 
@@ -469,7 +463,7 @@ namespace iShopping.Views
                     };
                     context.Orcamentos.Add(orcamento);
                     context.SaveChanges();
-                    MessageBox.Show("Orçamento criado com sucesso!");
+                    MessageBox.Show("Orçamento de adicionado com sucesso!");
                     LimparCampos();
                 }
                 // Atualiza a lista com os filtros atuais
@@ -477,7 +471,6 @@ namespace iShopping.Views
                 int? filtroMes = (cbFiltroMes.SelectedIndex > 0) ? Array.IndexOf(_meses, cbFiltroMes.Text) + 1 : (int?)null;
                 int? filtroAno = (cbFiltroAno.SelectedIndex > 0) ? int.Parse(cbFiltroAno.Text) : (int?)null;
                 CarregarOrcamentosFiltrados(filtroUtilizadorId, filtroMes, filtroAno);
-                lbErro.Visible = false;
             }
         }
 
@@ -485,8 +478,7 @@ namespace iShopping.Views
         {
             if (listView.SelectedItems.Count == 0)
             {
-                lbErro.Text = "Selecione um orçamento para apagar.";
-                lbErro.Visible = true;
+                MessageBox.Show("Selecione um orçamento para apagar.");
                 return;
             }
 
@@ -512,7 +504,8 @@ namespace iShopping.Views
                     int? filtroAno = (cbFiltroAno.SelectedIndex > 0) ? int.Parse(cbFiltroAno.Text) : (int?)null;
                     CarregarOrcamentosFiltrados(filtroUtilizadorId, filtroMes, filtroAno);
                     LimparCampos();
-                    MessageBox.Show("Orçamento apagado com sucesso!");
+                    MessageBox.Show("Orçamento de apagado com sucesso!");
+
                 }
             }
         }

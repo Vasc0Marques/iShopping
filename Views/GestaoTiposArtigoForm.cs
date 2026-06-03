@@ -181,6 +181,8 @@ namespace iShopping.Views
                 context.SaveChanges();
                 CarregarTiposArtigo();
                 LimparCampos();
+                MessageBox.Show("Tipo de artigo'" + tipoArtigo.Descricao + "' apagado com sucesso.");
+
             }
         }
 
@@ -199,14 +201,13 @@ namespace iShopping.Views
             {
                 if (_tipoArtigoIdEmEdicao.HasValue)
                 {
-                    // --- MODO EDIÇÃO: Atualizar tipo de artigo existente ---
                     var tipoArtigo = context.TiposArtigo.Find(_tipoArtigoIdEmEdicao.Value);
                     tipoArtigo.Descricao = crudTArtigoDescricao.Text;
                     context.SaveChanges();
+                    MessageBox.Show("Tipo de artigo'"+ tipoArtigo.Descricao +"' atualizado com sucesso.");
                 }
                 else
                 {
-                    // --- MODO CRIAÇÃO: Verificar se a descrição já existe ---
                     if (context.TiposArtigo.Any(t => t.Descricao == crudTArtigoDescricao.Text))
                     {
                         lbErro.Text = "Esta descrição já está em uso.";
@@ -222,10 +223,12 @@ namespace iShopping.Views
 
                     context.TiposArtigo.Add(tipoArtigo);
                     context.SaveChanges();
-                    LimparCampos(); // Limpa os campos após criar
+                    LimparCampos();
+                    MessageBox.Show("Tipo de artigo'" + tipoArtigo.Descricao + "' adicionado com sucesso.");
+
                 }
 
-                CarregarTiposArtigo(); // Atualiza a lista
+                CarregarTiposArtigo(); 
                 lbErro.Visible = false;
             }
         }

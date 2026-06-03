@@ -273,6 +273,7 @@ namespace iShopping.Views
                     artigo.IdTipoArtigo = (int)crudArtigoTipoInput.SelectedValue;
                     artigo.PrecoMedio = preco;
                     context.SaveChanges();
+                    MessageBox.Show("Artigo '" + artigo.Descricao + "'atualizado com sucesso!");
                 }
                 else
                 {
@@ -292,6 +293,7 @@ namespace iShopping.Views
                     context.Artigos.Add(artigo);
                     context.SaveChanges();
                     LimparCampos();
+                    MessageBox.Show("Artigo '" + artigo.Descricao + "'adicionado com sucesso!");
                 }
                 CarregarArtigos();
                 lbErro.Visible = false;
@@ -325,7 +327,7 @@ namespace iShopping.Views
                     context.SaveChanges();
                     CarregarArtigos();
                     LimparCampos();
-                    MessageBox.Show("Artigo apagado com sucesso!");
+                    MessageBox.Show("Artigo '" + artigo.Descricao + "'apagado com sucesso!");
                 }
             }
         }
