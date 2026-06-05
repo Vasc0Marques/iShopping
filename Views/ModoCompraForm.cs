@@ -397,21 +397,21 @@ namespace iShopping.Views
 
             if (cbArtigo.SelectedIndex == -1)
             {
-                MessageBox.Show("Selecione um artigo válido.");
+                MessageBox.Show("Selecione um artigo vï¿½lido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtQuantidadeAdquirida.Text) ||
                 !decimal.TryParse(txtQuantidadeAdquirida.Text, out decimal quantidade))
             {
-                MessageBox.Show("A quantidade adquirida deve ser um número válido.");
+                MessageBox.Show("A quantidade adquirida deve ser um nï¿½mero vï¿½lido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPrecoReal.Text) ||
                 !decimal.TryParse(txtPrecoReal.Text, out decimal preco))
             {
-                MessageBox.Show("O preço real deve ser um número válido.");
+                MessageBox.Show("O preï¿½o real deve ser um nï¿½mero vï¿½lido.");
                 return;
             }
 

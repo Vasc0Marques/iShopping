@@ -24,6 +24,9 @@ namespace iShopping.Views
 
                 if (utilizador != null)
                 {
+                    // Inicia a sessão do utilizador
+                    SessionManager.IniciarSessao(utilizador.Id, utilizador.Username);
+                    
                     var mainForm = new MainForm(utilizador);
                     mainForm.Show();
                     Hide();

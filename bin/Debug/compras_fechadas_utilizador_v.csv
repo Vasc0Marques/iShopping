@@ -1,0 +1,3 @@
+NomeCompra;DataCriacao;DataFechada;NomeArtigo;ArtigoPrevisto;PrecoUnitario;ArtigoNaoPrevisto;QuantidadePrevista;QuantidadeAdquirida
+Compra mes janeiro;18/05/2026 21:45;05/06/2026 11:24;Massa Esparguete;Sim;1.00;Nao;5;0
+Compra mes janeiro;18/05/2026 21:45;05/06/2026 11:24;Massa Esparguete;Nao;1.00;Sim;0;4

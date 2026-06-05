@@ -479,6 +479,8 @@ namespace iShopping.Views
                 return;
             }
 
+            string nomeArtigo = cbArtigo.Text;
+
             using (var context = new iShoppingContext())
             {
                 if (_itemCompraIdEmEdicao.HasValue)
@@ -492,7 +494,7 @@ namespace iShopping.Views
                     itemCompra.Observacoes = txtObservacoes.Text.Trim();
                     itemCompra.ArtigoPrevisto = true;
                     context.SaveChanges();
-                    MessageBox.Show("Item '" + itemCompra.Artigo.Nome + "' atualizado com sucesso!");
+                    MessageBox.Show("Item '" + nomeArtigo + "' atualizado com sucesso!");
                 }
                 else
                 {
@@ -507,7 +509,7 @@ namespace iShopping.Views
                     };
                     context.ItensCompra.Add(itemCompra);
                     context.SaveChanges();
-                    MessageBox.Show("Item '" + itemCompra.Artigo.Nome + "' adicionado com sucesso!");
+                    MessageBox.Show("Item '" + nomeArtigo + "' adicionado com sucesso!");
                 }
             }
 
@@ -535,6 +537,7 @@ namespace iShopping.Views
             {
                 return;
             }
+            string nomeArtigo = ((ListViewItem)listViewItens.SelectedItems[0]).Text;
 
             var selectedItem = listViewItens.SelectedItems[0];
             var id = (int)selectedItem.Tag;
@@ -546,7 +549,7 @@ namespace iShopping.Views
                 {
                     context.ItensCompra.Remove(itemCompra);
                     context.SaveChanges();
-                    MessageBox.Show("Item '" + itemCompra.Artigo.Nome + "' apagado com sucesso!");
+                    MessageBox.Show("Item '" + nomeArtigo + "' apagado com sucesso!");
                 }
             }
 
