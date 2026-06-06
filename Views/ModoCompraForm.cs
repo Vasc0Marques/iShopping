@@ -29,6 +29,7 @@ namespace iShopping.Views
         private Label lbQuantidade;
         private Label lbPreco;
         private Label lbObservacoes;
+        private TextBox txtOrcamentoDisponivel;
 
         private Label lbErro;
 
@@ -54,6 +55,7 @@ namespace iShopping.Views
             this.cbUtilizadorFechou = new System.Windows.Forms.ComboBox();
             this.lbTituloCompra = new System.Windows.Forms.Label();
             this.lbFechadoPor = new System.Windows.Forms.Label();
+            this.txtOrcamentoDisponivel = new System.Windows.Forms.TextBox();
             this.listViewItens = new System.Windows.Forms.ListView();
             this.cbArtigo = new System.Windows.Forms.ComboBox();
             this.txtQuantidadeAdquirida = new System.Windows.Forms.TextBox();
@@ -116,6 +118,16 @@ namespace iShopping.Views
             this.lbFechadoPor.Size = new System.Drawing.Size(84, 16);
             this.lbFechadoPor.TabIndex = 5;
             this.lbFechadoPor.Text = "Fechado por:";
+
+            // lbOrcamentoDisponivel
+            this.txtOrcamentoDisponivel.Location = new System.Drawing.Point(560, 70);
+            this.txtOrcamentoDisponivel.Name = "txtOrcamentoDisponivel";
+            this.txtOrcamentoDisponivel.Size = new System.Drawing.Size(240, 20);
+            this.txtOrcamentoDisponivel.TabIndex = 20;
+            this.txtOrcamentoDisponivel.ReadOnly = true;
+            this.txtOrcamentoDisponivel.Text = "Selecione uma compra";
+            this.txtOrcamentoDisponivel.BackColor = System.Drawing.Color.White;
+            this.txtOrcamentoDisponivel.ForeColor = System.Drawing.Color.Black;
 
             // listViewItens
             this.listViewItens.FullRowSelect = true;
@@ -253,6 +265,7 @@ namespace iShopping.Views
             this.Controls.Add(this.lbQuantidade);
             this.Controls.Add(this.lbPreco);
             this.Controls.Add(this.lbObservacoes);
+            this.Controls.Add(this.txtOrcamentoDisponivel);
             this.Controls.Add(this.lbErro);
             this.Name = "ModoCompraForm";
             this.ResumeLayout(false);
@@ -267,6 +280,7 @@ namespace iShopping.Views
                 cbUtilizadorFechou.DataSource = utilizadores;
                 cbUtilizadorFechou.DisplayMember = "Username";
                 cbUtilizadorFechou.ValueMember = "Id";
+                cbUtilizadorFechou.SelectedValue = SessionManager.IdUtilizadorAtual;
             }
         }
 
@@ -307,6 +321,8 @@ namespace iShopping.Views
                     listViewCompras.Items.Add(item);
                 }
             }
+
+            AtualizarOrcamentoDisponivel();
         }
 
         private void CarregarItensCompra(int compraId)
@@ -339,6 +355,74 @@ namespace iShopping.Views
                     listViewItens.Items.Add(item);
                 }
             }
+
+            AtualizarOrcamentoDisponivel();
+        }
+
+        private void AtualizarOrcamentoDisponivel()
+        {
+            if (!_compraIdSelecionada.HasValue)
+            {
+                txtOrcamentoDisponivel.Text = "Selecione uma compra";
+                txtOrcamentoDisponivel.BackColor = System.Drawing.Color.White;
+                txtOrcamentoDisponivel.ForeColor = System.Drawing.Color.Black;
+                return;
+            }
+
+            using (var context = new iShoppingContext())
+            {
+                var compra = context.Compras.Find(_compraIdSelecionada.Value);
+                if (compra == null)
+                {
+                    txtOrcamentoDisponivel.Text = "Compra inválida";
+                    txtOrcamentoDisponivel.BackColor = System.Drawing.Color.White;
+                    txtOrcamentoDisponivel.ForeColor = System.Drawing.Color.Black;
+                    return;
+                }
+
+                int mesAtual = DateTime.Today.Month;
+                int anoAtual = DateTime.Today.Year;
+                var orcamento = context.Orcamentos
+                    .FirstOrDefault(o => o.IdUtilizadorCriacao == compra.IdUtilizadorCriacao && o.Mes == mesAtual && o.Ano == anoAtual);
+
+                if (orcamento == null)
+                {
+                    txtOrcamentoDisponivel.Text = "Sem orçamento definido";
+                    txtOrcamentoDisponivel.BackColor = System.Drawing.Color.White;
+                    txtOrcamentoDisponivel.ForeColor = System.Drawing.Color.Black;
+                    return;
+                }
+
+                decimal? totalGastoFechadoNullable = context.Compras
+                    .Where(c => c.IdUtilizadorCriacao == compra.IdUtilizadorCriacao && c.DataFechada.HasValue && c.DataFechada.Value.Month == mesAtual && c.DataFechada.Value.Year == anoAtual)
+                    .SelectMany(c => c.ItensCompra)
+                    .Where(i => i.QuantidadeAdquirida.HasValue)
+                    .Select(i => (decimal?)(i.PrecoUnitario * i.QuantidadeAdquirida))
+                    .Sum();
+
+                decimal totalGastoFechado = totalGastoFechadoNullable ?? 0m;
+
+                decimal? totalGastoAtualNullable = context.ItensCompra
+                    .Where(i => i.IdCompra == _compraIdSelecionada.Value && i.QuantidadeAdquirida.HasValue)
+                    .Select(i => (decimal?)(i.PrecoUnitario * i.QuantidadeAdquirida))
+                    .Sum();
+
+                decimal totalGastoAtual = totalGastoAtualNullable ?? 0m;
+
+                decimal disponivel = orcamento.Valor - totalGastoFechado - totalGastoAtual;
+                if (disponivel < 0)
+                {
+                    txtOrcamentoDisponivel.Text = $"{disponivel:0.00} EUR (excedido)";
+                    txtOrcamentoDisponivel.BackColor = System.Drawing.Color.Red;
+                    txtOrcamentoDisponivel.ForeColor = System.Drawing.Color.White;
+                }
+                else
+                {
+                    txtOrcamentoDisponivel.Text = $"{disponivel:0.00} EUR";
+                    txtOrcamentoDisponivel.BackColor = System.Drawing.Color.White;
+                    txtOrcamentoDisponivel.ForeColor = System.Drawing.Color.Black;
+                }
+            }
         }
 
         private void listViewCompras_SelectedIndexChanged(object sender, EventArgs e)
@@ -347,6 +431,7 @@ namespace iShopping.Views
             {
                 LimparCamposCompra();
                 listViewItens.Items.Clear();
+                AtualizarOrcamentoDisponivel();
                 return;
             }
 
@@ -397,22 +482,62 @@ namespace iShopping.Views
 
             if (cbArtigo.SelectedIndex == -1)
             {
-                MessageBox.Show("Selecione um artigo v�lido.");
+                MessageBox.Show("Selecione um artigo válido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtQuantidadeAdquirida.Text) ||
                 !decimal.TryParse(txtQuantidadeAdquirida.Text, out decimal quantidade))
             {
-                MessageBox.Show("A quantidade adquirida deve ser um n�mero v�lido.");
+                MessageBox.Show("A quantidade adquirida deve ser um número válido.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPrecoReal.Text) ||
                 !decimal.TryParse(txtPrecoReal.Text, out decimal preco))
             {
-                MessageBox.Show("O pre�o real deve ser um n�mero v�lido.");
+                MessageBox.Show("O preço real deve ser um número válido.");
                 return;
+            }
+
+            // Verificar se vai exceder o orçamento
+            using (var context = new iShoppingContext())
+            {
+                var compra = context.Compras.Find(_compraIdSelecionada.Value);
+                if (compra != null)
+                {
+                    int mesAtual = DateTime.Today.Month;
+                    int anoAtual = DateTime.Today.Year;
+                    var orcamento = context.Orcamentos
+                        .FirstOrDefault(o => o.IdUtilizadorCriacao == compra.IdUtilizadorCriacao && o.Mes == mesAtual && o.Ano == anoAtual);
+
+                    if (orcamento != null)
+                    {
+                        decimal? totalGastoFechadoNullable = context.Compras
+                            .Where(c => c.IdUtilizadorCriacao == compra.IdUtilizadorCriacao && c.DataFechada.HasValue && c.DataFechada.Value.Month == mesAtual && c.DataFechada.Value.Year == anoAtual)
+                            .SelectMany(c => c.ItensCompra)
+                            .Where(i => i.QuantidadeAdquirida.HasValue)
+                            .Select(i => (decimal?)(i.PrecoUnitario * i.QuantidadeAdquirida))
+                            .Sum();
+
+                        decimal totalGastoFechado = totalGastoFechadoNullable ?? 0m;
+
+                        decimal? totalGastoAtualNullable = context.ItensCompra
+                            .Where(i => i.IdCompra == _compraIdSelecionada.Value && i.QuantidadeAdquirida.HasValue)
+                            .Select(i => (decimal?)(i.PrecoUnitario * i.QuantidadeAdquirida))
+                            .Sum();
+
+                        decimal totalGastoAtual = totalGastoAtualNullable ?? 0m;
+
+                        decimal novoGasto = quantidade * preco;
+                        decimal disponivel = orcamento.Valor - totalGastoFechado - totalGastoAtual - novoGasto;
+
+                        if (disponivel < 0)
+                        {
+                            MessageBox.Show($"Orçamento será excedido! Diferença: {disponivel:0.00} EUR", "Aviso de Orçamento");
+                        }
+                    }
+                }
             }
 
             using (var context = new iShoppingContext())
@@ -450,6 +575,7 @@ namespace iShopping.Views
             CarregarItensCompra(_compraIdSelecionada.Value);
             LimparCamposItem();
             lbErro.Visible = false;
+            AtualizarOrcamentoDisponivel();
         }
 
         private void btnApagarItem_Click(object sender, EventArgs e)
@@ -486,6 +612,7 @@ namespace iShopping.Views
             }
 
             LimparCamposItem();
+            AtualizarOrcamentoDisponivel();
         }
 
         private void btnFecharCompra_Click(object sender, EventArgs e)
@@ -524,6 +651,7 @@ namespace iShopping.Views
             listViewItens.Items.Clear();
             LimparCamposCompra();
             LimparCamposItem();
+            AtualizarOrcamentoDisponivel();
         }
 
         private void LimparCamposCompra()

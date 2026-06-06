@@ -297,6 +297,7 @@ namespace iShopping.Views
                 cbUtilizador.DataSource = utilizadores;
                 cbUtilizador.DisplayMember = "Username";
                 cbUtilizador.ValueMember = "Id";
+                cbUtilizador.SelectedValue = SessionManager.IdUtilizadorAtual;
             }
         }
 
@@ -579,7 +580,8 @@ namespace iShopping.Views
         {
             bool podeEditar = !_compraSelecionadaFechada;
             txtNomeCompra.Enabled = podeEditar;
-            cbUtilizador.Enabled = podeEditar;
+            // Desativar seleção de utilizador em modo de criação (nova compra)
+            cbUtilizador.Enabled = podeEditar && _compraIdEmEdicao.HasValue;
             btnGuardarCompra.Enabled = podeEditar;
 
             cbArtigo.Enabled = podeEditar;

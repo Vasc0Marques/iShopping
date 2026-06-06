@@ -27,7 +27,6 @@ namespace iShopping.Views
             Width = 800;
             Height = 420;
             InitializeComponent();
-            ListViewStyleHelper.ApplyPadrao(listViewCompras);
             CarregarEstados();
             CarregarCompras("Todos");
         }

@@ -276,6 +276,7 @@ namespace iShopping.Views
                 crudOrcamentoUtilizadorInput.DataSource = utilizadores;
                 crudOrcamentoUtilizadorInput.DisplayMember = "Username";
                 crudOrcamentoUtilizadorInput.ValueMember = "Id";
+                crudOrcamentoUtilizadorInput.SelectedValue = SessionManager.IdUtilizadorAtual;
             }
         }
 
@@ -297,7 +298,7 @@ namespace iShopping.Views
                 cbFiltroUtilizador.DataSource = utilizadoresComTodos;
                 cbFiltroUtilizador.DisplayMember = "Username";
                 cbFiltroUtilizador.ValueMember = "Id";
-                cbFiltroUtilizador.SelectedIndex = 0;
+                cbFiltroUtilizador.SelectedValue = SessionManager.IdUtilizadorAtual;
 
                 // Meses (para filtro, com nomes)
                 var mesesFiltro = new System.Collections.Generic.List<string> { "Todos" };
@@ -378,6 +379,8 @@ namespace iShopping.Views
                     crudOrcamentoMesInput.SelectedIndex = orcamento.Mes - 1; // Converter número (1-12) para índice (0-11)
                     crudOrcamentoAnoInput.Text = orcamento.Ano.ToString();
                     crudOrcamentoUtilizadorInput.SelectedValue = orcamento.IdUtilizadorCriacao;
+                    // Ativar seleção de utilizador em modo de edição
+                    crudOrcamentoUtilizadorInput.Enabled = true;
                     lbErro.Visible = false;
                     lbTitulo.Text = "Editar Orçamento";
                 }
@@ -517,6 +520,8 @@ namespace iShopping.Views
             crudOrcamentoAnoInput.Clear();
             listView.SelectedItems.Clear();
             _orcamentoIdEmEdicao = null;
+            // Desativar seleção de utilizador em modo de criação (novo orçamento)
+            crudOrcamentoUtilizadorInput.Enabled = false;
             lbErro.Visible = false;
         }
 
