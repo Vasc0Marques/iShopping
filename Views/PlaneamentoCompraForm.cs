@@ -1,4 +1,5 @@
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using iShopping.Data;
@@ -17,6 +18,7 @@ namespace iShopping.Views
         private Label lbErro;
 
         private ListView listViewItens;
+        private ComboBox cbTipoArtigo;
         private ComboBox cbArtigo;
         private TextBox txtQuantidadePrevista;
         private TextBox txtPrecoEstimado;
@@ -25,6 +27,7 @@ namespace iShopping.Views
         private Button btnApagarItem;
         private Button btnGuardarItem;
         private Label lbTituloItens;
+        private Label lbTipoArtigo;
         private Label lbArtigo;
         private Label lbQuantidade;
         private Label lbPreco;
@@ -42,7 +45,8 @@ namespace iShopping.Views
             Height = 560;
             InitializeComponent();
             CarregarUtilizadores();
-            CarregarArtigos();
+            CarregarTiposArtigo();
+            CarregarArtigos(ObterTipoArtigoSelecionado());
 
             if (compraId.HasValue)
             {
@@ -65,6 +69,7 @@ namespace iShopping.Views
             this.lbUtilizador = new System.Windows.Forms.Label();
             this.lbErro = new System.Windows.Forms.Label();
             this.listViewItens = new System.Windows.Forms.ListView();
+            this.cbTipoArtigo = new System.Windows.Forms.ComboBox();
             this.cbArtigo = new System.Windows.Forms.ComboBox();
             this.txtQuantidadePrevista = new System.Windows.Forms.TextBox();
             this.txtPrecoEstimado = new System.Windows.Forms.TextBox();
@@ -73,6 +78,7 @@ namespace iShopping.Views
             this.btnApagarItem = new System.Windows.Forms.Button();
             this.btnGuardarItem = new System.Windows.Forms.Button();
             this.lbTituloItens = new System.Windows.Forms.Label();
+            this.lbTipoArtigo = new System.Windows.Forms.Label();
             this.lbArtigo = new System.Windows.Forms.Label();
             this.lbQuantidade = new System.Windows.Forms.Label();
             this.lbPreco = new System.Windows.Forms.Label();
@@ -158,59 +164,68 @@ namespace iShopping.Views
             this.listViewItens.Columns.Add("Preco", 100);
             this.listViewItens.Columns.Add("Observacoes", 200);
             // 
+            // cbTipoArtigo
+            // 
+            this.cbTipoArtigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoArtigo.Location = new System.Drawing.Point(17, 257);
+            this.cbTipoArtigo.Name = "cbTipoArtigo";
+            this.cbTipoArtigo.Size = new System.Drawing.Size(220, 21);
+            this.cbTipoArtigo.TabIndex = 9;
+            this.cbTipoArtigo.SelectedIndexChanged += new System.EventHandler(this.cbTipoArtigo_SelectedIndexChanged);
+            // 
             // cbArtigo
             // 
             this.cbArtigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbArtigo.Location = new System.Drawing.Point(17, 257);
+            this.cbArtigo.Location = new System.Drawing.Point(17, 307);
             this.cbArtigo.Name = "cbArtigo";
             this.cbArtigo.Size = new System.Drawing.Size(220, 21);
-            this.cbArtigo.TabIndex = 9;
+            this.cbArtigo.TabIndex = 10;
             // 
             // txtQuantidadePrevista
             // 
-            this.txtQuantidadePrevista.Location = new System.Drawing.Point(17, 307);
+            this.txtQuantidadePrevista.Location = new System.Drawing.Point(17, 357);
             this.txtQuantidadePrevista.Name = "txtQuantidadePrevista";
             this.txtQuantidadePrevista.Size = new System.Drawing.Size(120, 20);
-            this.txtQuantidadePrevista.TabIndex = 10;
+            this.txtQuantidadePrevista.TabIndex = 11;
             // 
             // txtPrecoEstimado
             // 
-            this.txtPrecoEstimado.Location = new System.Drawing.Point(17, 357);
+            this.txtPrecoEstimado.Location = new System.Drawing.Point(17, 407);
             this.txtPrecoEstimado.Name = "txtPrecoEstimado";
             this.txtPrecoEstimado.Size = new System.Drawing.Size(120, 20);
-            this.txtPrecoEstimado.TabIndex = 11;
+            this.txtPrecoEstimado.TabIndex = 12;
             // 
             // txtObservacoes
             // 
-            this.txtObservacoes.Location = new System.Drawing.Point(17, 407);
+            this.txtObservacoes.Location = new System.Drawing.Point(17, 457);
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(333, 20);
-            this.txtObservacoes.TabIndex = 12;
+            this.txtObservacoes.TabIndex = 13;
             // 
             // btnAdicionarItem
             // 
-            this.btnAdicionarItem.Location = new System.Drawing.Point(382, 513);
+            this.btnAdicionarItem.Location = new System.Drawing.Point(382, 563);
             this.btnAdicionarItem.Name = "btnAdicionarItem";
             this.btnAdicionarItem.Size = new System.Drawing.Size(90, 23);
-            this.btnAdicionarItem.TabIndex = 13;
+            this.btnAdicionarItem.TabIndex = 14;
             this.btnAdicionarItem.Text = "Adicionar Item";
             this.btnAdicionarItem.Click += new System.EventHandler(this.btnAdicionarItem_Click);
             // 
             // btnApagarItem
             // 
-            this.btnApagarItem.Location = new System.Drawing.Point(478, 513);
+            this.btnApagarItem.Location = new System.Drawing.Point(478, 563);
             this.btnApagarItem.Name = "btnApagarItem";
             this.btnApagarItem.Size = new System.Drawing.Size(90, 23);
-            this.btnApagarItem.TabIndex = 14;
+            this.btnApagarItem.TabIndex = 15;
             this.btnApagarItem.Text = "Apagar Item";
             this.btnApagarItem.Click += new System.EventHandler(this.btnApagarItem_Click);
             // 
             // btnGuardarItem
             // 
-            this.btnGuardarItem.Location = new System.Drawing.Point(17, 437);
+            this.btnGuardarItem.Location = new System.Drawing.Point(17, 487);
             this.btnGuardarItem.Name = "btnGuardarItem";
             this.btnGuardarItem.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardarItem.TabIndex = 15;
+            this.btnGuardarItem.TabIndex = 16;
             this.btnGuardarItem.Text = "Guardar";
             this.btnGuardarItem.Click += new System.EventHandler(this.btnGuardarItem_Click);
             // 
@@ -224,45 +239,54 @@ namespace iShopping.Views
             this.lbTituloItens.TabIndex = 16;
             this.lbTituloItens.Text = "Itens previstos";
             // 
+            // lbTipoArtigo
+            // 
+            this.lbTipoArtigo.AutoSize = true;
+            this.lbTipoArtigo.Location = new System.Drawing.Point(14, 241);
+            this.lbTipoArtigo.Name = "lbTipoArtigo";
+            this.lbTipoArtigo.Size = new System.Drawing.Size(68, 13);
+            this.lbTipoArtigo.TabIndex = 17;
+            this.lbTipoArtigo.Text = "Tipo Artigo:";
+            // 
             // lbArtigo
             // 
             this.lbArtigo.AutoSize = true;
-            this.lbArtigo.Location = new System.Drawing.Point(14, 241);
+            this.lbArtigo.Location = new System.Drawing.Point(14, 291);
             this.lbArtigo.Name = "lbArtigo";
             this.lbArtigo.Size = new System.Drawing.Size(37, 13);
-            this.lbArtigo.TabIndex = 17;
+            this.lbArtigo.TabIndex = 18;
             this.lbArtigo.Text = "Artigo:";
             // 
             // lbQuantidade
             // 
             this.lbQuantidade.AutoSize = true;
-            this.lbQuantidade.Location = new System.Drawing.Point(14, 291);
+            this.lbQuantidade.Location = new System.Drawing.Point(14, 341);
             this.lbQuantidade.Name = "lbQuantidade";
             this.lbQuantidade.Size = new System.Drawing.Size(65, 13);
-            this.lbQuantidade.TabIndex = 18;
+            this.lbQuantidade.TabIndex = 19;
             this.lbQuantidade.Text = "Quantidade:";
             // 
             // lbPreco
             // 
             this.lbPreco.AutoSize = true;
-            this.lbPreco.Location = new System.Drawing.Point(14, 341);
+            this.lbPreco.Location = new System.Drawing.Point(14, 391);
             this.lbPreco.Name = "lbPreco";
             this.lbPreco.Size = new System.Drawing.Size(83, 13);
-            this.lbPreco.TabIndex = 19;
+            this.lbPreco.TabIndex = 20;
             this.lbPreco.Text = "Preco estimado:";
             // 
             // lbObservacoes
             // 
             this.lbObservacoes.AutoSize = true;
-            this.lbObservacoes.Location = new System.Drawing.Point(14, 391);
+            this.lbObservacoes.Location = new System.Drawing.Point(14, 441);
             this.lbObservacoes.Name = "lbObservacoes";
             this.lbObservacoes.Size = new System.Drawing.Size(73, 13);
-            this.lbObservacoes.TabIndex = 20;
+            this.lbObservacoes.TabIndex = 21;
             this.lbObservacoes.Text = "Observacoes:";
             // 
             // PlaneamentoCompraForm
             // 
-            this.ClientSize = new System.Drawing.Size(960, 548);
+            this.ClientSize = new System.Drawing.Size(960, 600);
             this.Controls.Add(this.txtNomeCompra);
             this.Controls.Add(this.cbUtilizador);
             this.Controls.Add(this.btnGuardarCompra);
@@ -271,6 +295,7 @@ namespace iShopping.Views
             this.Controls.Add(this.lbUtilizador);
             this.Controls.Add(this.lbErro);
             this.Controls.Add(this.listViewItens);
+            this.Controls.Add(this.cbTipoArtigo);
             this.Controls.Add(this.cbArtigo);
             this.Controls.Add(this.txtQuantidadePrevista);
             this.Controls.Add(this.txtPrecoEstimado);
@@ -279,6 +304,7 @@ namespace iShopping.Views
             this.Controls.Add(this.btnApagarItem);
             this.Controls.Add(this.btnGuardarItem);
             this.Controls.Add(this.lbTituloItens);
+            this.Controls.Add(this.lbTipoArtigo);
             this.Controls.Add(this.lbArtigo);
             this.Controls.Add(this.lbQuantidade);
             this.Controls.Add(this.lbPreco);
@@ -301,15 +327,65 @@ namespace iShopping.Views
             }
         }
 
-        private void CarregarArtigos()
+        private void CarregarTiposArtigo()
         {
             using (var context = new iShoppingContext())
             {
-                var artigos = context.Artigos.OrderBy(a => a.Descricao).ToList();
+                var tipos = context.TiposArtigo.OrderBy(t => t.Descricao).ToList();
+                cbTipoArtigo.DataSource = tipos;
+                cbTipoArtigo.DisplayMember = "Descricao";
+                cbTipoArtigo.ValueMember = "Id";
+                if (cbTipoArtigo.Items.Count > 0)
+                {
+                    cbTipoArtigo.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private int? ObterTipoArtigoSelecionado()
+        {
+            if (cbTipoArtigo.SelectedIndex == -1)
+            {
+                return null;
+            }
+
+            var selectedValue = cbTipoArtigo.SelectedValue;
+            if (selectedValue == null)
+            {
+                return null;
+            }
+
+            if (selectedValue is int id)
+            {
+                return id;
+            }
+
+            if (int.TryParse(selectedValue.ToString(), out id))
+            {
+                return id;
+            }
+
+            return null;
+        }
+
+        private void CarregarArtigos(int? idTipoArtigo = null)
+        {
+            using (var context = new iShoppingContext())
+            {
+                var artigos = context.Artigos
+                    .Where(a => !idTipoArtigo.HasValue || a.IdTipoArtigo == idTipoArtigo.Value)
+                    .OrderBy(a => a.Descricao)
+                    .ToList();
                 cbArtigo.DataSource = artigos;
                 cbArtigo.DisplayMember = "Descricao";
                 cbArtigo.ValueMember = "Id";
             }
+        }
+
+        private void cbTipoArtigo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTipoArtigo.SelectedIndex == -1) return;
+            CarregarArtigos(ObterTipoArtigoSelecionado());
         }
 
         private void CarregarCompra(int compraId)
@@ -422,11 +498,18 @@ namespace iShopping.Views
 
             using (var context = new iShoppingContext())
             {
-                var itemCompra = context.ItensCompra.Find(id);
+                var itemCompra = context.ItensCompra
+                    .Include(i => i.Artigo)
+                    .FirstOrDefault(i => i.Id == id);
                 if (itemCompra != null)
                 {
                     _itemCompraIdEmEdicao = itemCompra.Id;
-                    cbArtigo.SelectedValue = itemCompra.IdArtigo;
+                    if (itemCompra.Artigo != null)
+                    {
+                        cbTipoArtigo.SelectedValue = itemCompra.Artigo.IdTipoArtigo;
+                        CarregarArtigos(itemCompra.Artigo.IdTipoArtigo);
+                        cbArtigo.SelectedValue = itemCompra.IdArtigo;
+                    }
                     txtQuantidadePrevista.Text = itemCompra.QuantidadePrevista.ToString();
                     txtPrecoEstimado.Text = itemCompra.PrecoUnitario.ToString("0.00");
                     txtObservacoes.Text = itemCompra.Observacoes ?? string.Empty;
@@ -564,10 +647,20 @@ namespace iShopping.Views
 
         private void LimparCamposItem()
         {
+            if (cbTipoArtigo.Items.Count > 0)
+            {
+                cbTipoArtigo.SelectedIndex = 0;
+            }
+            else
+            {
+                cbArtigo.DataSource = null;
+            }
+
             if (cbArtigo.Items.Count > 0)
             {
                 cbArtigo.SelectedIndex = 0;
             }
+
             txtQuantidadePrevista.Clear();
             txtPrecoEstimado.Clear();
             txtObservacoes.Clear();
@@ -584,6 +677,7 @@ namespace iShopping.Views
             cbUtilizador.Enabled = podeEditar && _compraIdEmEdicao.HasValue;
             btnGuardarCompra.Enabled = podeEditar;
 
+            cbTipoArtigo.Enabled = podeEditar;
             cbArtigo.Enabled = podeEditar;
             txtQuantidadePrevista.Enabled = podeEditar;
             txtPrecoEstimado.Enabled = podeEditar;

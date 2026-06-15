@@ -16,7 +16,6 @@ namespace iShopping.Views
         private TabControl tabControl;
         private TabPage tabResumo;
         private TabPage tabSugestoes;
-        private DataGridView dgvResumoMensal;
         private DataGridView dgvComprasFechadas;
         private DataGridView dgvSugestaoListaCompras;
         private Label lblSugestaoOrcamento;
@@ -36,6 +35,7 @@ namespace iShopping.Views
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridView dgvResumoMensal;
         private Button btnAtualizar;
 
         public EstatisticasForm()
@@ -117,7 +117,7 @@ namespace iShopping.Views
             this.dgvResumoMensal.AllowUserToAddRows = false;
             this.dgvResumoMensal.AllowUserToDeleteRows = false;
             this.dgvResumoMensal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvResumoMensal.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvResumoMensal.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvResumoMensal.ColumnHeadersHeight = 29;
             this.dgvResumoMensal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -127,11 +127,11 @@ namespace iShopping.Views
             this.dgvResumoMensal.Location = new System.Drawing.Point(10, 40);
             this.dgvResumoMensal.Name = "dgvResumoMensal";
             this.dgvResumoMensal.ReadOnly = true;
+            this.dgvResumoMensal.RowHeadersVisible = false;
             this.dgvResumoMensal.RowHeadersWidth = 51;
             this.dgvResumoMensal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResumoMensal.Size = new System.Drawing.Size(830, 180);
             this.dgvResumoMensal.TabIndex = 1;
-            this.dgvResumoMensal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResumoMensal_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -174,7 +174,7 @@ namespace iShopping.Views
             this.dgvComprasFechadas.AllowUserToAddRows = false;
             this.dgvComprasFechadas.AllowUserToDeleteRows = false;
             this.dgvComprasFechadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvComprasFechadas.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvComprasFechadas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvComprasFechadas.ColumnHeadersHeight = 29;
             this.dgvComprasFechadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -185,6 +185,7 @@ namespace iShopping.Views
             this.dgvComprasFechadas.Location = new System.Drawing.Point(10, 260);
             this.dgvComprasFechadas.Name = "dgvComprasFechadas";
             this.dgvComprasFechadas.ReadOnly = true;
+            this.dgvComprasFechadas.RowHeadersVisible = false;
             this.dgvComprasFechadas.RowHeadersWidth = 51;
             this.dgvComprasFechadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvComprasFechadas.Size = new System.Drawing.Size(830, 180);
@@ -255,9 +256,9 @@ namespace iShopping.Views
             // 
             // lblSugestaoLista
             // 
-            this.lblSugestaoLista.Location = new System.Drawing.Point(10, 67);
+            this.lblSugestaoLista.Location = new System.Drawing.Point(10, 72);
             this.lblSugestaoLista.Name = "lblSugestaoLista";
-            this.lblSugestaoLista.Size = new System.Drawing.Size(700, 20);
+            this.lblSugestaoLista.Size = new System.Drawing.Size(700, 15);
             this.lblSugestaoLista.TabIndex = 2;
             this.lblSugestaoLista.Text = "Sugestão de compras para a semana atual, com base nas semanas anteriores";
             // 
@@ -275,6 +276,7 @@ namespace iShopping.Views
             this.dgvSugestaoListaCompras.Location = new System.Drawing.Point(10, 90);
             this.dgvSugestaoListaCompras.Name = "dgvSugestaoListaCompras";
             this.dgvSugestaoListaCompras.ReadOnly = true;
+            this.dgvSugestaoListaCompras.RowHeadersVisible = false;
             this.dgvSugestaoListaCompras.RowHeadersWidth = 51;
             this.dgvSugestaoListaCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSugestaoListaCompras.Size = new System.Drawing.Size(830, 300);

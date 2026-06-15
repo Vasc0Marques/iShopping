@@ -16,6 +16,7 @@ namespace iShopping.Views
         private Button btnFiltrar;
         private Button btnCriar;
         private Button btnEditar;
+        private Button btnApagar;
         private Label lbTitulo;
         private Button exportarCompras;
         private Label lbErro;
@@ -38,6 +39,7 @@ namespace iShopping.Views
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.btnCriar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnApagar = new System.Windows.Forms.Button();
             this.lbTitulo = new System.Windows.Forms.Label();
             this.lbErro = new System.Windows.Forms.Label();
             this.exportarCompras = new System.Windows.Forms.Button();
@@ -95,6 +97,15 @@ namespace iShopping.Views
             this.btnEditar.Text = "Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
+            // btnApagar
+            // 
+            this.btnApagar.Location = new System.Drawing.Point(174, 354);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(75, 23);
+            this.btnApagar.TabIndex = 5;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
             // lbTitulo
             // 
             this.lbTitulo.AutoSize = true;
@@ -117,7 +128,7 @@ namespace iShopping.Views
             // 
             // exportarCompras
             // 
-            this.exportarCompras.Location = new System.Drawing.Point(174, 354);
+            this.exportarCompras.Location = new System.Drawing.Point(255, 354);
             this.exportarCompras.Name = "exportarCompras";
             this.exportarCompras.Size = new System.Drawing.Size(199, 24);
             this.exportarCompras.TabIndex = 8;
@@ -134,6 +145,7 @@ namespace iShopping.Views
             this.Controls.Add(this.listViewCompras);
             this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnApagar);
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.lbErro);
             this.Name = "PlaneamentoComprasForm";
@@ -231,6 +243,47 @@ namespace iShopping.Views
                 form.ShowDialog(this);
             }
 
+            CarregarCompras(cbEstado.Text);
+        }
+
+        private void btnApagar_Click(object sender, System.EventArgs e)
+        {
+            if (listViewCompras.SelectedItems.Count == 0)
+            {
+                lbErro.Text = "Selecione uma compra para apagar.";
+                lbErro.Visible = true;
+                return;
+            }
+
+            var selectedItem = listViewCompras.SelectedItems[0];
+            var id = (int)selectedItem.Tag;
+
+            using (var context = new iShoppingContext())
+            {
+                var compra = context.Compras.Find(id);
+                if (compra == null)
+                {
+                    lbErro.Text = "Compra não encontrada.";
+                    lbErro.Visible = true;
+                    return;
+                }
+
+                if (compra.DataFechada.HasValue)
+                {
+                    MessageBox.Show("Compras fechadas não podem ser apagadas.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (MessageBox.Show($"Tem a certeza que quer apagar a compra '{compra.Nome}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    return;
+                }
+
+                context.Compras.Remove(compra);
+                context.SaveChanges();
+            }
+
+            lbErro.Visible = false;
             CarregarCompras(cbEstado.Text);
         }
 
