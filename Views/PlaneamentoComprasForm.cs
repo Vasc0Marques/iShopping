@@ -19,6 +19,10 @@ namespace iShopping.Views
         private Button btnApagar;
         private Label lbTitulo;
         private Button exportarCompras;
+        private Button button1;
+        private Button button2;
+        private DateTimePicker dataInicio;
+        private DateTimePicker dataFim;
         private Label lbErro;
 
         public PlaneamentoComprasForm()
@@ -29,7 +33,7 @@ namespace iShopping.Views
             Height = 420;
             InitializeComponent();
             CarregarEstados();
-            CarregarCompras("Todos");
+            CarregarCompras("Todos" , null, null);
         }
 
         private void InitializeComponent()
@@ -43,31 +47,30 @@ namespace iShopping.Views
             this.lbTitulo = new System.Windows.Forms.Label();
             this.lbErro = new System.Windows.Forms.Label();
             this.exportarCompras = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataInicio = new System.Windows.Forms.DateTimePicker();
+            this.dataFim = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // listViewCompras
             // 
             this.listViewCompras.FullRowSelect = true;
             this.listViewCompras.HideSelection = false;
-            this.listViewCompras.Location = new System.Drawing.Point(12, 44);
+            this.listViewCompras.Location = new System.Drawing.Point(12, 74);
             this.listViewCompras.Name = "listViewCompras";
-            this.listViewCompras.Size = new System.Drawing.Size(756, 300);
+            this.listViewCompras.Size = new System.Drawing.Size(756, 270);
             this.listViewCompras.TabIndex = 2;
             this.listViewCompras.UseCompatibleStateImageBehavior = false;
             this.listViewCompras.View = System.Windows.Forms.View.Details;
-            this.listViewCompras.Columns.Add("Id", 50);
-            this.listViewCompras.Columns.Add("Nome", 180);
-            this.listViewCompras.Columns.Add("Data Criação", 100);
-            this.listViewCompras.Columns.Add("Utilizador", 100);
-            this.listViewCompras.Columns.Add("Estado", 200);
             this.listViewCompras.SelectedIndexChanged += new System.EventHandler(this.listViewCompras_SelectedIndexChanged);
             // 
             // cbEstado
             // 
             this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstado.Location = new System.Drawing.Point(525, 14);
+            this.cbEstado.Location = new System.Drawing.Point(555, 14);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(160, 24);
+            this.cbEstado.Size = new System.Drawing.Size(130, 24);
             this.cbEstado.TabIndex = 0;
             // 
             // btnFiltrar
@@ -136,9 +139,43 @@ namespace iShopping.Views
             this.exportarCompras.UseVisualStyleBackColor = true;
             this.exportarCompras.Click += new System.EventHandler(this.exportarCompras_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(460, 355);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(229, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Exportar Compras Abertas";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dataInicio
+            // 
+            this.dataInicio.Location = new System.Drawing.Point(17, 42);
+            this.dataInicio.Name = "dataInicio";
+            this.dataInicio.Size = new System.Drawing.Size(181, 22);
+            this.dataInicio.TabIndex = 10;
+            // 
+            // dataFim
+            // 
+            this.dataFim.Location = new System.Drawing.Point(204, 42);
+            this.dataFim.Name = "dataFim";
+            this.dataFim.Size = new System.Drawing.Size(200, 22);
+            this.dataFim.TabIndex = 11;
+            // 
             // PlaneamentoComprasForm
             // 
             this.ClientSize = new System.Drawing.Size(780, 390);
+            this.Controls.Add(this.dataFim);
+            this.Controls.Add(this.dataInicio);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.exportarCompras);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.btnFiltrar);
@@ -163,7 +200,7 @@ namespace iShopping.Views
             cbEstado.SelectedIndex = 0;
         }
 
-        private void CarregarCompras(string estado)
+        private void CarregarCompras(string estado, DateTime? dataInicio, DateTime? dataFim )
         {
             if (!SessionManager.EstaLogado())
             {
@@ -183,6 +220,17 @@ namespace iShopping.Views
                 else if (estado == "Fechada")
                 {
                     query = query.Where(c => c.DataFechada != null);
+                }
+
+                // Filtro por data (independente do estado)
+                if (dataInicio.HasValue)
+                {
+                    query = query.Where(c => c.DataCriacao >= dataInicio.Value);
+                }
+
+                if (dataFim.HasValue)
+                {
+                    query = query.Where(c => c.DataCriacao <= dataFim.Value);
                 }
 
                 var compras = query
@@ -212,7 +260,7 @@ namespace iShopping.Views
 
         private void btnFiltrar_Click(object sender, System.EventArgs e)
         {
-            CarregarCompras(cbEstado.Text);
+            CarregarCompras(cbEstado.Text , dataInicio.Value, dataFim.Value);
         }
 
         private void btnCriar_Click(object sender, System.EventArgs e)
@@ -222,7 +270,7 @@ namespace iShopping.Views
                 form.ShowDialog(this);
             }
 
-            CarregarCompras(cbEstado.Text);
+            CarregarCompras(cbEstado.Text, dataInicio.Value, dataFim.Value);
         }
 
         private void btnEditar_Click(object sender, System.EventArgs e)
@@ -243,7 +291,7 @@ namespace iShopping.Views
                 form.ShowDialog(this);
             }
 
-            CarregarCompras(cbEstado.Text);
+            CarregarCompras(cbEstado.Text, dataInicio.Value, dataFim.Value);
         }
 
         private void btnApagar_Click(object sender, System.EventArgs e)
@@ -284,7 +332,7 @@ namespace iShopping.Views
             }
 
             lbErro.Visible = false;
-            CarregarCompras(cbEstado.Text);
+            CarregarCompras(cbEstado.Text, dataInicio.Value, dataFim.Value);
         }
 
         private void listViewCompras_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -314,7 +362,7 @@ namespace iShopping.Views
 
                 using (var writer = new System.IO.StreamWriter(filePath))
                 {
-                    writer.WriteLine("NomeCompra;DataCriacao;DataFechada;NomeArtigo;ArtigoPrevisto;PrecoUnitario;ArtigoNaoPrevisto;QuantidadePrevista;QuantidadeAdquirida");
+                    writer.WriteLine("NomeCompra;DataCriacao;DataFechada;NomeArtigo;ArtigoPrevisto;PrecoUnitario;ArtigoNaoPrevisto;QuantidadePrevista;QuantidadeAdquirida;TotalLinha");
 
                     foreach (var compra in comprasFechadas)
                     {
@@ -331,8 +379,57 @@ namespace iShopping.Views
                             decimal qtdAdquirida = Convert.ToDecimal(item.QuantidadeAdquirida);
                             string quantidadePrevista = qtdPrevista.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
                             string quantidadeAdquirida = qtdAdquirida.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+                            decimal totalLinha = 
+                                (item.PrecoUnitario) * (decimal)(item.QuantidadeAdquirida ?? 0);
+                            writer.WriteLine($"{compra.Nome};{dataCriacao};{dataFechada};{item.Artigo.Descricao};{artigoPrevisto};{precoUnitario};{artigoNaoPrevisto};{quantidadePrevista};{quantidadeAdquirida};{totalLinha}");
+                        }
+                    }
+                }
 
-                            writer.WriteLine($"{compra.Nome};{dataCriacao};{dataFechada};{item.Artigo.Descricao};{artigoPrevisto};{precoUnitario};{artigoNaoPrevisto};{quantidadePrevista};{quantidadeAdquirida}");
+                MessageBox.Show($"Compras exportadas com sucesso para o ficheiro: {filePath}");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var context = new iShoppingContext())
+            {
+                int idUtilizador = SessionManager.IdUtilizadorAtual;
+                string nomeUtilizador = SessionManager.UsernameUtilizadorAtual;
+
+                var comprasAbertas = context.Compras
+                    .Where(c => c.IdUtilizadorCriacao == idUtilizador && c.DataFechada == null)
+                    .Include(c => c.ItensCompra.Select(i => i.Artigo))
+                    .ToList();
+
+                if (comprasAbertas.Count == 0)
+                {
+                    MessageBox.Show("Não há compras abertas para exportar.");
+                    return;
+                }
+
+                string filePath = $"compras_abertas_utilizador_{nomeUtilizador}.csv";
+
+                using (var writer = new System.IO.StreamWriter(filePath))
+                {
+                    writer.WriteLine("NomeCompra;DataCriacao;DataFechada;NomeArtigo;ArtigoPrevisto;PrecoUnitario;ArtigoNaoPrevisto;QuantidadePrevista;QuantidadeAdquirida");
+
+                    foreach (var compra in comprasAbertas)
+                    {
+                        foreach (var item in compra.ItensCompra)
+                        {
+                            string dataCriacao = compra.DataCriacao.ToString("dd/MM/yyyy HH:mm");
+
+                            string artigoPrevisto = item.ArtigoPrevisto ? "Sim" : "Nao";
+                            string artigoNaoPrevisto = !item.ArtigoPrevisto ? "Sim" : "Nao";
+
+                            string precoUnitario = item.PrecoUnitario.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture).Replace(",", ".");
+                            decimal qtdPrevista = Convert.ToDecimal(item.QuantidadePrevista);
+                            decimal qtdAdquirida = Convert.ToDecimal(item.QuantidadeAdquirida);
+                            string quantidadePrevista = qtdPrevista.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+                            string quantidadeAdquirida = qtdAdquirida.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+
+                            writer.WriteLine($"{compra.Nome};{dataCriacao};{item.Artigo.Descricao};{artigoPrevisto};{precoUnitario};{artigoNaoPrevisto};{quantidadePrevista};{quantidadeAdquirida}");
                         }
                     }
                 }

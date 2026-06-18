@@ -54,3 +54,4 @@ C:\UNI\iShopping\obj\Debug\iShopping.csproj.CoreCompileInputs.cache
 C:\UNI\iShopping\obj\Debug\iShopping.csproj.Up2Date
 C:\UNI\iShopping\obj\Debug\iShopping.exe
 C:\UNI\iShopping\obj\Debug\iShopping.pdb
+C:\UNI\iShopping\obj\Debug\iShopping.exe.config
